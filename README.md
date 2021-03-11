@@ -1,4 +1,4 @@
-# Stopwatch1
+# Stopwatch
 Programm Stopwatch. 
 The job of this programm is to simulate a stopwatch. 
 It  provide two methods: Start and Stop. We call the start method first,
