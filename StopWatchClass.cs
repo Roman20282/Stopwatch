@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Stopwatch
 {
-    internal class StopWatchClass
+    class StopWatchClass
     {
         public DateTime Start()
         {
