@@ -6,7 +6,7 @@ namespace Stopwatch
     {
         static void Main(string[] args)
         {
-            //                Programm Stopwatch. 
+            //                               Programm Stopwatch. 
             //=============================================================================================
             //  The job of this programm is to simulate a stopwatch. 
             //It provide two methods: Start and Stop.We call the start method first,
@@ -18,13 +18,11 @@ namespace Stopwatch
             //We can't to start a stopwatch twice in a row (because that may overwrite the initial start time). 
             //=============================================================================================
            
-            StopWatchClass sw = new StopWatchClass();
-            DateTime tStart, tStop;
-            TimeSpan interval;
-            string s1, s2, pressedKey ="";
+            string pressedKey ="";
             bool stopwatchOK;
             do
             {
+                StopWatchClass sw = new StopWatchClass();
                 do
                 {
                     
@@ -36,32 +34,25 @@ namespace Stopwatch
                         Console.WriteLine("00:00:00");
                     }
                     while (Console.ReadLine() != "s");
-                    tStart = sw.Start();
-                    s1 = tStart.ToLongTimeString();
+                    sw.Start();
+                        while(pressedKey != "s")
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Start:   {0}     For stop press \"s\" and Enter.", sw.TStart.ToLongTimeString());
+                            pressedKey = Console.ReadLine();
 
-                    
-                    while(pressedKey != "s")
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Start:   {0}     For stop press \"s\" and Enter.", s1);
-                        pressedKey = Console.ReadLine();
-
-                    }
+                        }
                     stopwatchOK = true;
                     pressedKey = "";
                 }
                 while (!stopwatchOK);
-                tStop = sw.Stop();
-                s2 = tStop.ToLongTimeString();
-                stopwatchOK = false;
+                sw.Stop();
                 Console.Clear();
-                Console.WriteLine("Start time:   {0}", s1);
-                Console.WriteLine(" Stop time:   {0}", s2);
-                interval = tStop - tStart;
-                Console.WriteLine(" Time span:   {0}",interval);
-                Console.ReadLine();
+                Console.WriteLine("Start time:   {0}", sw.TStart.ToLongTimeString());
+                Console.WriteLine(" Stop time:   {0}", sw.TStop.ToLongTimeString());
+                Console.WriteLine(" Time span:   {0}", sw.Interval());
                 Console.WriteLine("In oder to stop program press \"q\" and Enter. ");
-                
+                Console.WriteLine("Press any key...");
             } 
             while (Console.ReadLine() != "q"); 
             

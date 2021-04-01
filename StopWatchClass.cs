@@ -6,16 +6,22 @@ namespace Stopwatch
 {
     class StopWatchClass
     {
+        public DateTime TStart { get; private set; }
+        public DateTime TStop { get; private set; }
+
         public DateTime Start()
         {
-            DateTime startMoment = DateTime.Now;
-            return startMoment;
+            TStart = DateTime.Now;
+            return TStart; 
         }
-
         public DateTime Stop()
         {
-            DateTime stopMoment = DateTime.Now;
-            return stopMoment;
+           TStop = DateTime.Now;
+            return TStop;
         }
+        public TimeSpan Interval()
+        {
+            return TStop - TStart;
+        }      
     }
 }
